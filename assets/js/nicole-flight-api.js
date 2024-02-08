@@ -8,6 +8,7 @@ const destinationInput = document.getElementById('destination-input');
 const departureDate = document.getElementById('departure-date');
 const returnDate = document.getElementById('return-date');
 let spinner = document.getElementById('spinner');
+const currency = document.getElementById('currency-display');
 
 
 //Datepicker
@@ -669,6 +670,7 @@ function flightData(departureCity, arrivalCity,arr) {
     flightBtn.addEventListener('click', (e)=>{
         e.preventDefault();
         initialise();
+        currency.innerHTML='';
         userOrigin = originInput.value;
         userDestination = destinationInput.value;
         let originSearch = originInput.value.toLowerCase().trim();
