@@ -1,0 +1,38 @@
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+    background-color: #f0f0f0;
+} */
+
+.weather-header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 20px 0;
+}
+
+#weather-display, #forecast {
+    margin-top: 20px;
+}
+
+.forecast-card {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.forecast-card img {
+    width: 50px;
+}
+
+#favorites-list .btn {
+    width: 100%;
+    margin-top: 5px;
+}

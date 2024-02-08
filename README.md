@@ -1,2 +1,1 @@
-# fare-forecast
-Group Project 001
+# FareForcast-App
