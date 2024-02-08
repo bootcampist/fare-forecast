@@ -9,7 +9,7 @@ const departureDate = document.getElementById('departure-date');
 const returnDate = document.getElementById('return-date');
 let spinner = document.getElementById('spinner');
 const currency = document.getElementById('currency-display');
-const currencyBox = document.getElementById('#currency-box');
+
 
 //Datepicker
 $('#departure-date').datepicker({
@@ -671,7 +671,6 @@ function flightData(departureCity, arrivalCity,arr) {
         e.preventDefault();
         initialise();
         currency.innerHTML='';
-        // currencyBox.style.display="block";
         userOrigin = originInput.value;
         userDestination = destinationInput.value;
         let originSearch = originInput.value.toLowerCase().trim();
