@@ -1,5 +1,5 @@
-const apiKey = '65460f2d682dbe6e454f0b9ada6fd285';
-const token = '754qvh7p56n2636z6u8dt2qc';
+const austen = '65460f2d682dbe6e454f0b9ada6fd285';
+const gundam = '754qvh7p56n2636z6u8dt2qc';
 //HTML Elements
 const flightDiv = document.getElementById('flight-info');
 const flightBtn = document.getElementById('flight-btn');
@@ -75,8 +75,8 @@ function queryInfo (input) {
     destinationArray=[];
     const cityQuery = [userQuery.currentCity, userQuery.destinationCity];
 
-    const originCode = `https://api.openweathermap.org/geo/1.0/direct?q=${cityQuery[0]}&limit=5&appid=${apiKey}`;
-    const destinationCode = `https://api.openweathermap.org/geo/1.0/direct?q=${cityQuery[1]}&limit=5&appid=${apiKey}`;
+    const originCode = `https://api.openweathermap.org/geo/1.0/direct?q=${cityQuery[0]}&limit=5&appid=${austen}`;
+    const destinationCode = `https://api.openweathermap.org/geo/1.0/direct?q=${cityQuery[1]}&limit=5&appid=${austen}`;
     Promise.all([
         fetch(originCode).then((response) => {return response.json()}).then((data1) => {  
             const city = data1[0];
@@ -123,7 +123,7 @@ function nearestAirport() {
     // Fetch requests
     Promise.all([
         fetch(originQuery , {
-            headers: {Authorization: `Bearer ${token}`}
+            headers: {Authorization: `Bearer ${gundam}`}
         }).then((response) => {return response.json()}).then((data1) => {  
                 console.log(data1.NearestAirportResource.Airports.Airport);
                 const code = data1.NearestAirportResource.Airports.Airport[0].CityCode;
@@ -146,7 +146,7 @@ function nearestAirport() {
             errorMessage (errorMsg);
         }),
         fetch(destinationQuery , {
-            headers: {Authorization: `Bearer ${token}`}
+            headers: {Authorization: `Bearer ${gundam}`}
         }).then((response) => {return response.json()}).then((data2) => {  
                 const code = data2.NearestAirportResource.Airports.Airport[0].CityCode;
                 userInput.geocoded.destination.cityCode = code;
@@ -188,7 +188,7 @@ function nearestAirport() {
 function flightData(departureCity, arrivalCity,arr) {  
     //Fetch request
         fetch(query , {
-            headers: {Authorization: `Bearer ${token}`}
+            headers: {Authorization: `Bearer ${gundam}`}
         })
         .then((response) => {
             return response.json();
