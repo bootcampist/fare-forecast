@@ -44,7 +44,7 @@ $(document).ready(function () {
           <div class="col-12">
               <h2>${data.name}</h2>
               <p>Local Time: ${timeString}</p>
-              <img src="http://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="${data.weather[0].description}">
+              <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="${data.weather[0].description}">
               <p>Temperature: ${data.main.temp} °C</p>
               <p>Weather: ${data.weather[0].main}</p>
               <p>Wind Speed: ${data.wind.speed} KPH</p>
@@ -70,7 +70,7 @@ $(document).ready(function () {
                         <h5>${new Date(
                           forecast.dt_txt
                         ).toLocaleDateString()}</h5>
-                        <img src="http://openweathermap.org/img/wn/${
+                        <img src="https://openweathermap.org/img/wn/${
                           forecast.weather[0].icon
                         }.png" alt="Weather icon">
                         <p>Temp: ${forecast.main.temp}°C</p>
