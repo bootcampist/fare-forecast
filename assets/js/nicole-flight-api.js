@@ -9,6 +9,7 @@ const departureDate = document.getElementById('departure-date');
 const returnDate = document.getElementById('return-date');
 let spinner = document.getElementById('spinner');
 const currency = document.getElementById('currency-display');
+const currencyBox = document.getElementById('currency-box');
 
 //Datepicker
 $('#departure-date').datepicker({
@@ -360,7 +361,7 @@ function flightData(departureCity, arrivalCity,arr) {
         
         //Outbound Departure
         const departureDivO = document.createElement('div')
-        departureDivO.setAttribute('id', `o-departure-div-${i+1}`);
+        departureDivO.setAttribute('class', `departure-div-o`);
         const departureTextboxO = document.createElement('div')
         departureTextboxO.setAttribute('id', `o-departure-textbox-${i+1}`);
         
@@ -371,7 +372,7 @@ function flightData(departureCity, arrivalCity,arr) {
         
         //Outbound Arrival
         const arrivalDivO = document.createElement('div')
-        arrivalDivO.setAttribute('id', `o-arrival-div-${i+1}`);
+        arrivalDivO.setAttribute('class', `arrival-div-o`);
         const arrivalTextboxO = document.createElement('div')
         arrivalTextboxO.setAttribute('id', `o-arrival-div-${i+1}`);
         
@@ -383,7 +384,7 @@ function flightData(departureCity, arrivalCity,arr) {
         
         //Return Departure
         const departureDivR = document.createElement('div')
-        departureDivR.setAttribute('id', `r-departure-div-${i+1}`);
+        departureDivR.setAttribute('class', `departure-div-r`);
         const departureTextboxR = document.createElement('div')
         departureTextboxR.setAttribute('id', `r-departure-textbox-${i+1}`);
         
@@ -394,7 +395,7 @@ function flightData(departureCity, arrivalCity,arr) {
         
         //Return Arrival
         const arrivalDivR = document.createElement('div')
-        arrivalDivR.setAttribute('id', `r-arrival-div-${i+1}`);
+        arrivalDivR.setAttribute('class', `arrival-div-r`);
         const arrivalTextboxR = document.createElement('div')
         arrivalTextboxR.setAttribute('id', `r-arrival-div-${i+1}`);
 
@@ -552,7 +553,6 @@ function flightData(departureCity, arrivalCity,arr) {
                 
                 if(moreInfoDiv.style.display==='block') {
                     $('.more-div').slideUp();
-                    // moreInfoDiv.style.display='none';
                     arrivalTextboxO.innerHTML = outArrText;
                     departureTextboxR.innerHTML = retDepText;
                     moreBtn.innerHTML = 'See more';
@@ -661,6 +661,10 @@ function flightData(departureCity, arrivalCity,arr) {
         e.preventDefault();
         initialise();
         currency.innerHTML='';
+        $('#currency-container').fadeOut();
+        $('#currency-container').fadeIn(1000);
+        $('#Weather').fadeOut();
+        $('#Weather').fadeIn(1000);
         userOrigin = originInput.value;
         userDestination = destinationInput.value;
         let originSearch = originInput.value.toLowerCase().trim();

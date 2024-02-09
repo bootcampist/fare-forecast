@@ -90,7 +90,8 @@ $("#flight-btn").on("click", function (event) {
                 .then(function (response) {return response.json();})
                 .then(function (data) {
                     let conversionRate = data.conversion_rate;
-                    let createdString = ("The current exchange rate from " + originCurrencyname + " (" + origincurrencyCode + ") to " + destinationCurrencyname + " (" + destinationcurrencyCode + ") is " + conversionRate);
+                    // let createdString = ("The current exchange rate from " + originCurrencyname + " (" + origincurrencyCode + ") to " + destinationCurrencyname + " (" + destinationcurrencyCode + ") is " + conversionRate);
+                    let createdString = ("The current exchange rate from " + originCurrencyname + " (" + origincurrencyCode + ") to " + destinationCurrencyname + " (" + destinationcurrencyCode + ") is :");
                     $("#currency_text").append(createdString);
                     $("#currency-display").html(conversionRate);
                     console.log(createdString);

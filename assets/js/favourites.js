@@ -10,6 +10,14 @@ const buttonsDiv = document.getElementById('clear');
 const clearBtn = document.createElement('button');
 clearBtn.setAttribute('id', 'clear-button');
 const favouritesBtn = document.getElementById('favourites-btn');
+//Weather
+const apiKey = `359fbb9063e60407b575e9a14683190b`;
+
+//Currency
+// currencyAPI = 'https://v6.exchangerate-api.com/v6/cce8439a497e07a97ad9f20f/pair/';
+// locationAPI = "https://api.openweathermap.org/geo/1.0/direct?q=";
+// locationAPIkey = "&appid=7029ec148d2666f47569499650a8ea2e";
+// databaseLink = "https://pkgstore.datahub.io/core/country-codes/country-codes_json/data/616b1fb83cbfd4eb6d9e7d52924bb00a/country-codes_json.json";
 
 //Global Variables
 let favouritesArray=[];
@@ -91,7 +99,11 @@ function renderButtons (array){
             spinner.style.display="block";
             returnExists = true;
             initialise();
-
+            currency.innerHTML='';
+            $('#currency-box').fadeOut();
+            $('#currency-box').fadeIn(1000);
+            $('#Weather').fadeOut();
+            $('#Weather').fadeIn(1000);
             userInput.currentCity = favouritesInput.currentCity;
             userInput.destinationCity = favouritesInput.destinationCity;
             userInput.departureDate = favouritesInput.departureDate;
@@ -257,7 +269,7 @@ function renderButtons (array){
                         .then(function (response) {return response.json();})
                         .then(function (data) {
                             let conversionRate = data.conversion_rate;
-                            let createdString = ("The current exchange rate from " + originCurrencyname + " (" + origincurrencyCode + ") to " + destinationCurrencyname + " (" + destinationcurrencyCode + ") is " + conversionRate);
+                            let createdString = ("The current exchange rate from " + originCurrencyname + " (" + origincurrencyCode + ") to " + destinationCurrencyname + " (" + destinationcurrencyCode + ") is: ");
                             $("#currency_text").append(createdString);
                             $("#currency-display").html(conversionRate);
                             console.log(createdString);
