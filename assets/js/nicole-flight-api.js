@@ -1,5 +1,5 @@
 const apiKey = '65460f2d682dbe6e454f0b9ada6fd285';
-const token = '9gkz3eee56n6thj7u6jxw35d';
+const token = '754qvh7p56n2636z6u8dt2qc';
 //HTML Elements
 const flightDiv = document.getElementById('flight-info');
 const flightBtn = document.getElementById('flight-btn');
@@ -9,7 +9,6 @@ const departureDate = document.getElementById('departure-date');
 const returnDate = document.getElementById('return-date');
 let spinner = document.getElementById('spinner');
 const currency = document.getElementById('currency-display');
-
 
 //Datepicker
 $('#departure-date').datepicker({
@@ -149,7 +148,6 @@ function nearestAirport() {
         fetch(destinationQuery , {
             headers: {Authorization: `Bearer ${token}`}
         }).then((response) => {return response.json()}).then((data2) => {  
-            // console.log(data2.NearestAirportResource.Airports.Airport);
                 const code = data2.NearestAirportResource.Airports.Airport[0].CityCode;
                 userInput.geocoded.destination.cityCode = code;
                 let airportArray = data2.NearestAirportResource.Airports.Airport;
@@ -159,8 +157,6 @@ function nearestAirport() {
                     let airportItem = {code: airportCode, name: airportName };
                     destinationCodeArray.push(airportItem);
                 });
-                // console.log('input1', userInput.geocoded.destination.cityCode);
-                // console.log(data2.NearestAirportResource.Airports.Airport[0].Names.Name[0].$);
                 return code;
         }).then((code2)=>{
                 code2 ? outbound(code2) : errorCode(userDestination);
@@ -185,7 +181,6 @@ function nearestAirport() {
     function inbound () {
         query = `https://api.lufthansa.com/v1/operations/schedules/${userInput.geocoded.destination.airportCode}/${userInput.geocoded.origin.airportCode}/${userInput.returnDate}?`; 
         isReturn = true;
-        // console.log('inbound');
         flightData(destination, origin, flightInfo);        
     };
 
@@ -200,7 +195,6 @@ function flightData(departureCity, arrivalCity,arr) {
         })
         .then((data) => {  
             const flights = data?.ScheduleResource.Schedule;
-            // console.log(flights);
 
             //Check Whether or Not Flight Is Direct
             isDirect = data?.ScheduleResource.Schedule[0].Flight.Departure;
@@ -223,7 +217,6 @@ function flightData(departureCity, arrivalCity,arr) {
             //Origin Airport Name
             originCodeArray.map((item)=>{
                 item.code === outboundDepAirport ? userInput.geocoded.origin.airportName = item.name : item;
-                // console.log(item, outboundDepAirport);
             });
 
 
@@ -280,11 +273,8 @@ function flightData(departureCity, arrivalCity,arr) {
 
             destinationCodeArray.map((item)=>{
                 item.code === outboundArrAirport ? userInput.geocoded.destination.airportName = item.name : item;
-                // console.log(item, outboundArrAirport);
             });
             
-            // console.log('name', userInput.geocoded.destination.airportName);
-
             isReturn ? userInput : userInput.geocoded.destination.airportCode = outboundArrAirport;
 
             //Flight Arrival Airport Name
@@ -339,9 +329,7 @@ function flightData(departureCity, arrivalCity,arr) {
         } else {
             returnArray = [departure, transferArr, transferDep, arrival];
             entireArray = [outboundArray, returnArray];
-            // console.log('return', returnArray);
             renderData(entireArray);
-            // console.log('entire',entireArray);
         }
     };
 
@@ -632,6 +620,8 @@ function flightData(departureCity, arrivalCity,arr) {
         const notFound = `We couldn't find ${location}. Try again with a different city.`;
         errorMessage(notFound);
     }
+
+    //Create Airport Not Found Error Message
 
     function errorCode(place){
         let location = place;
