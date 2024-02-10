@@ -337,10 +337,13 @@ function flightData(departureCity, arrivalCity,arr) {
 //Create HTML Elements to Render Data in the Browser 
     function renderData(arr){
         //Centre Div Information
-        let outboundCentrepiece = outboundArray[1][4].duration || ' ';
-        const outboundCentreInfo = ['<hr>', '', outboundCentrepiece, '', '<hr>'] ;
-        let returnCentrepiece = returnArray[1][4].duration || ' ';
-        const returnCentreInfo = ['<hr>', '', returnCentrepiece, '', '<hr>'] ;
+        // let outboundCentrepiece = outboundArray[1][4].duration || ' ';
+        let outboundCentrepiece = '<i class="fa-solid fa-plane"></i>';
+        const outboundCentreInfo = ['', '', outboundCentrepiece, '', ''] ;
+        // let returnCentrepiece = returnArray[1][4].duration || ' ';
+        let returnCentrepiece = '<i class="fa-solid fa-plane"></i>';
+        const returnCentreInfo = ['', '', returnCentrepiece, '', ''] ;
+        let moreCentrepiece = '<i class="fa-solid fa-plane more-plane"></i>';
         
         //Container for Flight Elements
         const flightContainer = document.createElement('div')
@@ -429,7 +432,7 @@ function flightData(departureCity, arrivalCity,arr) {
         const moreCentreDivO = document.createElement('div')
         moreCentreDivO.setAttribute('class', `more-o-centre`);
         const moreCentreTextboxO = document.createElement('div')
-        moreCentreTextboxO.setAttribute('class', `more-o-centre-textbox`);
+        moreCentreTextboxO.setAttribute('class', `more-centre-textbox-o`);
         
         //More Info Destination Arrival Divs
         const moreArrivalDivO = document.createElement('div')
@@ -455,7 +458,7 @@ function flightData(departureCity, arrivalCity,arr) {
         const moreCentreDivR = document.createElement('div')
         moreCentreDivR.setAttribute('class', `more-r-centre`);
         const moreCentreTextboxR = document.createElement('div')
-        moreCentreTextboxR.setAttribute('class', `more-r-centre-textbox`);
+        moreCentreTextboxR.setAttribute('class', `more-centre-textbox-r`);
        
         //More Info Return Transfer Arrival Divs
         const moreArrivalDivR = document.createElement('div')
@@ -570,6 +573,9 @@ function flightData(departureCity, arrivalCity,arr) {
             //More Info Divs
             moreArrivalTextboxO.innerHTML = arrivalTextboxO.innerHTML;
             moreDepartureTextboxR.innerHTML = departureTextboxR.innerHTML;
+            moreCentreTextboxO.innerHTML = moreCentrepiece;
+            moreCentreTextboxR.innerHTML = moreCentrepiece;
+
 
             moreInfoOutboundDisplay.append(moreDepartureTextboxO, moreCentreTextboxO,moreArrivalTextboxO);
             moreInfoOutbound.append(moreInfoOutboundTitle, moreInfoOutboundDisplay);
