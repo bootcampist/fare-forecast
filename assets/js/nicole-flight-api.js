@@ -1,5 +1,5 @@
 const austen = '65460f2d682dbe6e454f0b9ada6fd285';
-const gundam = '754qvh7p56n2636z6u8dt2qc';
+const gundam = 'y4fbdz8bvqvna45ge6q99dwe'; 
 //HTML Elements
 const flightDiv = document.getElementById('flight-info');
 const flightBtn = document.getElementById('flight-btn');
@@ -43,10 +43,13 @@ let totalDuration;
 let origin;
 let destination;
 let returnCall = false;
+let falseOrigin = [];
+let falseDestination = [];
 let departureInfo; 
 let transferInfo; 
 let arrivalInfo;
 let flightInfo;
+let searchedName;
 let outboundData = [];
 let returnData = [];
 let entireArray = [];
@@ -122,7 +125,6 @@ function nearestAirport() {
     const destinationQuery = `https://api.lufthansa.com/v1/mds-references/airports/nearest/${destinationLat},${destinationLon}`;
 
     //Isolate the City Code of the City In Which the Nearest Airport is Located
-
     // Fetch requests
     Promise.all([
         fetch(originQuery , {
@@ -171,7 +173,7 @@ function nearestAirport() {
       ]);
 };
 
-//Use City Codes to Populate Query URL for Outbound Flights, Then Call API Again for Flight Information
+//Use City Codes to Populate Query URL for Outbound Flights, Then Call API for Flight Information
     function outbound (code) {
         // console.log(code[0]);
         code.length === 2 ? originCode = code[0]: destinationCode = code;
@@ -191,6 +193,9 @@ function nearestAirport() {
 
 //Call Lufthansa Flight API and Store Flight Details in Various Variables and Arrays
 function flightData(departureCity, arrivalCity,arr) {  
+    origin='';
+    destination ='';
+
     //Fetch request
         fetch(query , {
             headers: {Authorization: `Bearer ${gundam}`}
@@ -218,11 +223,21 @@ function flightData(departureCity, arrivalCity,arr) {
            
             //Compare the Airport Code with the Array of Airport Codes and Names Generated Earlier During the Nearest Airport Request. If the Aiport Code Matches One In the Array of Airport Codes and Names, the Corresponding Airport Name is Assigned to the Flight Information 
             //Origin Airport Name
+            falseOrigin = [];
             originCodeArray.map((item)=>{
-                item.code === outboundDepAirport ? userInput.geocoded.origin.airportName = item.name : item;
+                item.code === outboundDepAirport ? userInput.geocoded.origin.airportName = item.name : falseOrigin.push('false');
             });
 
+            //If there Isn't a Match, the getAirportName Function Is Called
 
+            if (isReturn){
+                origin;
+            } else{
+            falseOrigin.length === originCodeArray.length ? getAirportName(outboundDepAirport) : console.log('Flight Data Airport Name', userInput.geocoded.origin.airportName);
+            
+            let originTime = setTimeout(()=>{userInput.geocoded.origin.airportName = searchedName; console.log('from timeout', userInput.geocoded.origin.airportName)},400);
+        }
+            
             isReturn ? destination = userInput.geocoded.origin.airportName : origin = userInput.geocoded.origin.airportName;
 
             //Origin Flight Number
@@ -247,7 +262,7 @@ function flightData(departureCity, arrivalCity,arr) {
             const transferArrAirport = flight?.Arrival.AirportCode;
 
             //Transfer Stopover
-            const stopover = 'stopover';
+            const stopover = 'Stopover';
 
             isDirect ? flight = data?.ScheduleResource.Schedule[0].Flight : flight = data?.ScheduleResource.Schedule[0]?.Flight[2] ||  data?.ScheduleResource.Schedule[0].Flight[1] ;
 
@@ -274,9 +289,19 @@ function flightData(departureCity, arrivalCity,arr) {
             //Outbound Flight Arrival Airport
             const outboundArrAirport = flight?.Arrival.AirportCode;
 
+            falseDestination=[];
             destinationCodeArray.map((item)=>{
-                item.code === outboundArrAirport ? userInput.geocoded.destination.airportName = item.name : item;
+                item.code === outboundArrAirport ? userInput.geocoded.destination.airportName = item.name : falseDestination.push('false');
             });
+
+            if (isReturn){
+                destination;
+            } else{
+            falseDestination.length === destinationCodeArray.length ? getAirportName(outboundDepAirport) : console.log('Flight Data Airport Name', userInput.geocoded.origin.airportName);
+            
+            let originTime = setTimeout(()=>{userInput.geocoded.origin.airportName = searchedName; console.log('from timeout', userInput.geocoded.origin.airportName)},400);
+        }
+        console.log('destination', destination);
             
             isReturn ? userInput : userInput.geocoded.destination.airportCode = outboundArrAirport;
 
@@ -304,6 +329,22 @@ function flightData(departureCity, arrivalCity,arr) {
             errorMessage (errorMsg);
         });
         return flightInfo;
+};
+
+//Get Airport Name from Its Aiport Code If It Isn't In the Nearest Aiport Array
+function getAirportName(airportCode){
+    searchedName = 'Airport';
+    let code = airportCode;
+
+    const nameQuery = `https://api.lufthansa.com/v1/mds-references/airports/${code}?limit=20&offset=0&LHoperated=0`;
+    fetch(nameQuery , {
+        headers: {Authorization: `Bearer ${gundam}`}
+    }).then((response) => {return response.json()}).then((data) => {  
+            searchedName = data?.AirportResource.Airports.Airport.Names.Name[1]['$'] | 'Airport';
+            
+    }).catch((err)=>{
+        errorMessage (errorMsg);
+    });
 };
 
 //Prepare Flight Data to Be Rendered in the Browser
@@ -343,7 +384,7 @@ function flightData(departureCity, arrivalCity,arr) {
          
         let onePlane = '<span id="more-planes"><i class="fa-solid fa-plane one more-plane"></i></span>'
         let twoPlanes = '<span id="centre-planes"><i class="fa-solid fa-plane"></i><i class="fa-solid fa-circle"></i><i class="fa-solid fa-plane"></span>'
-        let outboundCentrepiece = '<i class="fa-solid fa-plane"></i>' || '<i class="fa-solid fa-plane"></i>';
+        let outboundCentrepiece;
         // const outboundCentreInfo = ['', '', outboundCentrepiece, '', ''] ;
         // let returnCentrepiece = returnArray[1][4].duration || ' ';
         let returnCentrepiece = '<i class="fa-solid fa-plane"></i>';
