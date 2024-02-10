@@ -144,25 +144,64 @@ li {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+
     /* margin-left: 0.3vw; */
 }
 
-.fa-plane {
+.centre-textbox-o {
+    display:flex;
+    flex-direction: row;
+}
+
+#centre-planes{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-right: 2.5vw;
+    margin-left: -1vw;
+}
+/* .fa-plane {
     width: 100%;
     display: inline-block;
     color: rgb(255, 255, 255, 0.6);
     font-size: 2vw;
     text-align: center;
-    padding-right: 2.5vw;
+    /* padding-right: 2.5vw; */
+/* } */ 
+
+.fa-plane {
+    /* width: 100%; */
+    display: inline;
+    color: rgb(255, 255, 255, 0.6);
+    font-size: 1.5vw;
+    text-align: center;
+    /* padding-right: 2.5vw; */
+}
+
+.fa-circle {
+    /* width: 100%; */
+    display: inline;
+    color: rgb(255, 255, 255, 0.6);
+    font-size: 0.7vw;
+    text-align: center;
+    /* padding-right: 2.5vw; */
+}
+
+#more-planes{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-left: -2.5vw;
 }
 
 .more-plane {
-    width: 100%;
-    display: inline-block;
+    /* width: 100%; */
+    display: inline;
     color: rgb(255, 255, 255, 0.4);
     font-size: 2vw;
     text-align: center;
-    padding-right: 2.5vw;
+    /* padding-right: 2.5vw; */
 }
 
 /* Styling for the See More Section */
