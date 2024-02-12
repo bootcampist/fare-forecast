@@ -102,55 +102,62 @@ li {
 }
 
 /* Styling for the Divs Containing the Flight Text */
-.flight-textbox-o, .more-outbound-display, .more-return-display {    
+.flight-textbox-o, .more-div, .flight-textbox-r {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 31vw;
+}
+.flight-display-o, .more-outbound-display, .more-return-display {    
     border-bottom: 1px #dc7769 dashed;
     width: 30vw;
 }
 
-.flight-textbox-o {
-    border-radius: 10px 10px 0 0;
-}
-
-.flight-textbox-r {
-    border-radius: 0 0 10px 10px;
-}
-
-.flight-display-o, .flight-display-r, .more-outbound-display, .more-return-display, .more-outbound-title, .more-return-title {
+.flight-display-o, .more-outbound-display, .more-return-display, .flight-display-r, .more-return-title, .more-outbound-title {
     display: flex;
     flex-direction: row;
-    width: 30vw;
+    align-items: center;
     justify-content: center;
-    margin: 10px;
+    width: 30vw;
+    margin: auto;
 }
 
-.flight-display-o div, .flight-display-r div {
+/* Styling for the flight text titles */
+.more-return-title, .more-outbound-title{
+    display:flex;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-family:'dosis', sans-serif;
+    margin: auto;
+    margin-top: 10px;
+    margin-left: -2.5vw;
+    width: 100%;
+    text-align: center;
+}
+
+.more-outbound-title {
+    display:none;
+}
+
+/* Styling for the flight section content */
+.departure-textbox-o, .more-departure-textbox-o, .more-departure-textbox-r,.departure-textbox-r, .arrival-textbox-o, .more-arrival-textbox-o, .more-arrival-textbox-r,.arrival-textbox-r{
     display: flex;
     flex-direction: column;
-    width: 100%;
-}
-
-/* Styling for the Central Divs of the Flight Section */
-.centre-div-o, .centre-div-r, .more-outbound-display, .more-return-display {
-    display:flex;
-    flex-direction: row;
-    align-items: center;
     justify-content: center;
+    width: 20vw;
+    height: 30vh;
+    margin:auto;
 }
 
-.centre-o, .centre-r {
-    display:flex;
-    flex-direction: row;
-    align-items: center;
+/* Styling for the plane icons */
+.centre-textbox-o, .more-centre-textbox-o, .more-centre-textbox-r,.centre-textbox-r{
+   display: flex;
+   flex-direction: column;
+    width: 10vw;
+    height: 22vh;
     justify-content: center;
-
-    /* margin-left: 0.3vw; */
-}
-
-.centre-textbox-o {
-    display:flex;
-    flex-direction: row;
+    margin:auto;   
 }
 
 #centre-planes{
@@ -158,92 +165,41 @@ li {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding-right: 2.5vw;
-    margin-left: -1vw;
+    height: 100%;
+    margin-left: -2.5vw;
 }
-/* .fa-plane {
-    width: 100%;
-    display: inline-block;
-    color: rgb(255, 255, 255, 0.6);
-    font-size: 2vw;
-    text-align: center;
-    /* padding-right: 2.5vw; */
-/* } */ 
 
 .fa-plane {
-    /* width: 100%; */
     display: inline;
     color: rgb(255, 255, 255, 0.6);
     font-size: 1.5vw;
     text-align: center;
-    /* padding-right: 2.5vw; */
 }
 
 .fa-circle {
-    /* width: 100%; */
     display: inline;
     color: rgb(255, 255, 255, 0.6);
     font-size: 0.7vw;
     text-align: center;
-    /* padding-right: 2.5vw; */
 }
 
 #more-planes{
     width: 100%;
+    height:100%;
     display: flex;
     justify-content: center;
+    align-items: center;
     margin-left: -2.5vw;
 }
 
 .more-plane {
-    /* width: 100%; */
     display: inline;
-    color: rgb(255, 255, 255, 0.4);
-    font-size: 2vw;
+    color: rgb(255, 255, 255, 0.5);
+    font-size: 1.5vw;
     text-align: center;
-    /* padding-right: 2.5vw; */
 }
 
-/* Styling for the See More Section */
-.more-div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.more-outbound, .more-return {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.more-outbound-title, .more-return-title {
-    display: flex;
-    margin-left: -2vw;
-    font-size: 1rem;
-}
-
-.more-outbound-display, .more-return-display {
-    margin-top: 10px;
-    width: 30vw;
-}
-
-.more-o-departure-textbox, .more-r-departure-textbox, .more-o-arrival-textbox, .more-r-arrival-textbox {
-  padding-bottom: 10px;
-}
-
-.more-o-departure-textbox, .more-r-departure-textbox {
-    width: 20vw;
-}
-
-.more-centre-textbox-o, .more-centre-textbox-r{
-    width: 20vw;
-}
-
-.more-o-arrival-textbox, .more-r-arrival-textbox {
-    width: 20vw;
-}
-
+/* Styling for the 'See More' button */
 .more-button {
     border:none;
     border-radius: 15px;
@@ -258,10 +214,49 @@ li {
     background-color: #26313e;
 }
 
+@media only screen and (min-width: 700px) and (max-width: 885px){
+    .centre-textbox-o, .more-centre-textbox-o, .more-centre-textbox-r,.centre-textbox-r{
+        display: flex;
+        flex-direction: column;
+        width: 20vw;
+        min-height:22vh;
+        justify-content: center;
+        padding-top:20px;
+        margin:auto; 
+}
 
+.fa-plane {
+    display: inline;
+    color: rgb(255, 255, 255, 0.6);
+    font-size: 2vw;
+    text-align: center;
+}
 
-/* Responsiveness for Mobile Devices */
-@media only screen and (max-width: 480px){
+.fa-circle {
+    display: inline;
+    color: rgb(255, 255, 255, 0.6);
+    font-size: 0.7vw;
+    text-align: center;
+}
+
+#more-planes{
+    width: 100%;
+    height:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -2.5vw;
+}
+
+.more-plane {
+    display: inline;
+    color: rgb(255, 255, 255, 0.5);
+    font-size: 2vw;
+    text-align: center;
+}
+}
+
+ @media only screen and (min-width: 450px) and (max-width: 700px){ 
     #flight-info{
         margin-top: 30px;
     }
@@ -274,9 +269,9 @@ li {
     
     .spinner-grow {
         opacity: 0.7;
-        width: 20vw;
-        height: 20vw;
-        margin-left: 40%;
+        width: 10vw;
+        height: 10vw;
+        margin-left: 45%;
         margin-top: 7%;
         margin-bottom: 10%;
     }
@@ -286,79 +281,250 @@ li {
         border-radius: 30px;
         margin-top: 5px;
     }
-   
-    
-    .centre-o, .centre-r {
+
+    /* Styling for the Divs Containing the Flight Text */
+    .flight-textbox-o, .more-div, .flight-textbox-r {
+        width: 100vw;
+        min-height:30vw;
+    }
+    .flight-display-o, .more-outbound-display, .more-return-display {    
+        border-bottom: 1px #dc7769 dashed;
+        width: 95vw;
+    }
+
+    .flight-display-o, .more-outbound-display, .more-return-display, .flight-display-r, .more-return-title, .more-outbound-title {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        width: 95vw;
+        height: 40vh;
+        margin: auto;
+    }
+
+    /* Styling for the flight text titles */
+    .more-return-title, .more-outbound-title{
+        display:flex;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-family:'dosis', sans-serif;
+        margin: auto;
+        margin-top: 10px;
+        margin-left: -2.5vw;
+        width: 100%;
+        height: 2vh;
+        text-align: center;
+    }
+
+    .more-outbound-title {
         display:none;
     }
 
-    hr {
-        display: none;
+    /* Styling for the flight section content */
+    .departure-textbox-o, .more-departure-textbox-o, .more-departure-textbox-r,.departure-textbox-r, .arrival-textbox-o, .more-arrival-textbox-o, .more-arrival-textbox-r,.arrival-textbox-r{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 20vw;
+        min-height: 22vh;
+        margin:auto;
     }
 
-    .flight-display-o, .flight-display-r {
+    /* Styling for the plane icons */
+    .centre-textbox-o, .more-centre-textbox-o, .more-centre-textbox-r,.centre-textbox-r{
+        display: flex;
+        flex-direction: column;
+        width: 20vw;
+        min-height:22vh;
+        justify-content: center;
+        margin:auto;   
+    }
+
+    #centre-planes{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        margin-left: -2.5vw;
+    }
+
+    .fa-plane {
+        display: inline;
+        color: rgb(255, 255, 255, 0.6);
+        font-size: 3vw;
+        text-align: center;
+    }
+
+    .fa-circle {
+        display: inline;
+        color: rgb(255, 255, 255, 0.6);
+        font-size: 1.1vw;
+        text-align: center;
+    }
+
+    #more-planes{
+        width: 100%;
+        height:100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: -2.5vw;
+    }
+
+    .more-plane {
+        display: inline;
+        color: rgb(255, 255, 255, 0.5);
+        font-size: 4vw;
+        text-align: center;
+    }
+
+    /* Styling for the 'See More' button */
+    .more-button {
+        border:none;
+        border-radius: 15px;
+        outline: none;
+        color: white;
+        background-color: #dc7769;
+        height: 5vh;
+        min-width: 95vw;
+        }
+
+} 
+
+/* For Smaller Devices */
+@media only screen and (min-width: 200px) and (max-width: 450px){ 
+    #flight-info{
+        margin-top: 30px;
+    }
+
+    #spinner {
+        width: 100%;
+        display: none;
+        margin-top: 1vh;
+    }
+    
+    .spinner-grow {
+        opacity: 0.7;
+        width: 10vw;
+        height: 10vw;
+        margin-left: 45%;
+        margin-top: 7%;
+        margin-bottom: 10%;
+    }
+
+    #error-message { 
+        width: 80vw;
+        height: 20vh;
+        border-radius: 15px;
+        margin-top: 5px;
+    }
+
+    /* Styling for the Divs Containing the Flight Text */
+    .flight-textbox-o, .more-div, .flight-textbox-r {
+        width: 100vw;
+        min-height:30vw;
+    }
+    .flight-display-o, .more-outbound-display, .more-return-display {    
+        border-bottom: 1px #dc7769 dashed;
+        width: 95vw;
+    }
+
+    .flight-display-o, .more-outbound-display, .more-return-display, .flight-display-r, .more-return-title, .more-outbound-title {
         display: flex;
         flex-direction: row;
-        width:100vw;
-        min-height: 25vh;
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-    
-    .departure-div-o div, .departure-div-r div, .arrival-div-o div, .arrival-div-r div {
-        display: flex;
-        flex-direction: column;
-        width: 50vw;
-        height: 10vh;
-        padding: 1vw;
+        align-items: center;
+        justify-content: center;
+        width: 95vw;
+        height: 40vh;
+        margin: auto;
     }
 
-    .departure-div-o div, .departure-div-r div {
-        padding-left: 5px;
+    /* Styling for the flight text titles */
+    .more-return-title, .more-outbound-title{
+        display:flex;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-family:'dosis', sans-serif;
+        margin: auto;
+        margin-top: 30px;
+        margin-left: -2.5vw;
+        width: 100%;
+        height: 2vh;
+        text-align: center;
     }
 
-    .centre-div-o, .centre-div-r , .centre-textbox-o, .centre-textbox-r{
-        font-size: 0em;
-        display: none;
-        width: 5vw;
+    .more-outbound-title {
+        display:none;
     }
 
-    .flight-textbox-r{
+    /* Styling for the flight section content */
+    .departure-textbox-o, .more-departure-textbox-o, .more-departure-textbox-r,.departure-textbox-r, .arrival-textbox-o, .more-arrival-textbox-o, .more-arrival-textbox-r,.arrival-textbox-r{
         display: flex;
         flex-direction: column;
         justify-content: center;
-        border-radius: 0;
-
+        width: 30vw;
+        min-height: 22vh;
+        margin:auto;
     }
+
+    /* Styling for the plane icons */
+    .centre-textbox-o, .more-centre-textbox-o, .more-centre-textbox-r,.centre-textbox-r{
+        display: flex;
+        flex-direction: column;
+        width: 20vw;
+        min-height:22vh;
+        justify-content: center;
+        margin:auto;   
+    }
+
+    #centre-planes{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        margin-left: -2.5vw;
+    }
+
+    .fa-plane {
+        display: inline;
+        color: rgb(255, 255, 255, 0.6);
+        font-size: 4vw;
+        text-align: center;
+    }
+
+    .fa-circle {
+        display: inline;
+        color: rgb(255, 255, 255, 0.6);
+        font-size: 2vw;
+        text-align: center;
+    }
+
+    #more-planes{
+        width: 100%;
+        height:100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: -2.5vw;
+    }
+
+    .more-plane {
+        display: inline;
+        color: rgb(255, 255, 255, 0.5);
+        font-size: 7vw;
+        text-align: center;
+    }
+
+    /* Styling for the 'See More' button */
     .more-button {
-        margin: auto;
-        min-width: 70vw;
+        border:none;
+        border-radius: 15px;
+        outline: none;
+        color: white;
+        background-color: #dc7769;
+        height: 5vh;
+        min-width: 95vw;
+        }
     }
- 
-
-    /* Container Div for the Flight Detail Divs */
-    .more-o-departure-textbox, .more-r-departure-textbox, .more-o-arrival-textbox, .more-r-arrival-textbox{
-        display: flex;
-        width: 50vw;
-        height: 25vh;
-        padding: 10px;;    
-    }
-
-    .more-outbound-title, .more-return-title {
-        display: flex;
-        justify-content: center;
-        font-size: 2rem;
-        margin: auto;
-    }
-    
-    .more-outbound-display, .more-return-display {
-        margin-top: 10px;
-        width: 100vw;
-        display: flex;
-        justify-content: center;
-    }
-    
-    .more-o-departure-textbox, .more-r-departure-textbox, .more-o-arrival-textbox, .more-r-arrival-textbox {
-      padding-bottom: 10px;
-    }
-}

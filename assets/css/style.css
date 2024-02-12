@@ -122,7 +122,12 @@ p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width:31vw;
     display:none;
+}
+
+#currency-container h2 {
+    text-align: center;
 }
 
 #currency-box {
@@ -132,6 +137,7 @@ p {
     width:95%;
     min-height: 30vh;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 8px 0px;
+    margin: auto;
 }
 
 #currency-display {
@@ -207,8 +213,8 @@ background-color: #dc7769;
     .input-group-button {
         display: flex;
         flex-direction: column;
-        width: 85vw;
-    }
+        width: 36vh;
+        }
 
     /* Weather Card Section */
     #weather-card {
@@ -222,7 +228,8 @@ background-color: #dc7769;
         display: flex;
         justify-content: center;
         width: 90%; 
-        margin-top: 40px;       
+        margin-top: 40px;
+        display: none;       
     }
 
     /* Currency Exchange Card Section */
@@ -240,6 +247,9 @@ background-color: #dc7769;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        width: 90%;
+        margin: auto;
+        display: none;
     }
 
     #currency-container h2 {
@@ -260,7 +270,8 @@ background-color: #dc7769;
         width: 100vw;
         display: flex;
         justify-content: center;
-        padding-bottom: 0;       
+        align-items: center;
+        padding-bottom: 0;     
     }
     
     .card .favourites-button {
@@ -272,6 +283,7 @@ background-color: #dc7769;
         height: 5vh;
         width: 80vw;
         margin-top: 5px;
+
     }
 
     /* Clear Button Section */
