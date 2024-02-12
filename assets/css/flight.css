@@ -33,7 +33,7 @@
     color: white;
     background-color: transparent;
     outline: none;
-    border: 1px rgb(255, 255, 255,0.7) solid;
+    border: 1px rgba(255, 255, 255, 0.7) solid;
     border-radius: 15px;
     padding: 5px 15px;
     margin: 5px;
@@ -223,37 +223,37 @@ li {
         justify-content: center;
         padding-top:20px;
         margin:auto; 
-}
+    }
 
-.fa-plane {
-    display: inline;
-    color: rgb(255, 255, 255, 0.6);
-    font-size: 2vw;
-    text-align: center;
-}
+    .fa-plane {
+        display: inline;
+        color: rgb(255, 255, 255, 0.6);
+        font-size: 2vw;
+        text-align: center;
+    }
 
-.fa-circle {
-    display: inline;
-    color: rgb(255, 255, 255, 0.6);
-    font-size: 0.7vw;
-    text-align: center;
-}
+    .fa-circle {
+        display: inline;
+        color: rgb(255, 255, 255, 0.6);
+        font-size: 0.7vw;
+        text-align: center;
+    }
 
-#more-planes{
-    width: 100%;
-    height:100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: -2.5vw;
-}
+    #more-planes{
+        width: 100%;
+        height:100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: -2.5vw;
+    }
 
-.more-plane {
-    display: inline;
-    color: rgb(255, 255, 255, 0.5);
-    font-size: 2vw;
-    text-align: center;
-}
+    .more-plane {
+        display: inline;
+        color: rgb(255, 255, 255, 0.5);
+        font-size: 2vw;
+        text-align: center;
+    }
 }
 
  @media only screen and (min-width: 450px) and (max-width: 700px){ 
@@ -388,7 +388,7 @@ li {
         background-color: #dc7769;
         height: 5vh;
         min-width: 95vw;
-        }
+    }
 
 } 
 

@@ -196,6 +196,51 @@ background-color: #dc7769;
     clear: both;
 }
 
+footer ul {
+    width: 95vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left:3.5vw;
+    margin-bottom:-2px;
+}
+
+.icons {
+    height: 1.5vw;
+    margin-right: 15px;
+}
+
+#fb {
+    background-image: url('../image/fb-2.png');
+}
+
+#in {
+    background-image: url('../image/in-2.png');
+}
+
+#x {
+    background-image: url('../image/x-2.png');
+}
+
+#fb,#in,#x,#fb:hover,#in:hover,#x:hover {
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 20px;
+    width: 20px;
+}
+
+#fb:hover {
+    background-image: url('../image/fb-1.png');
+}
+
+#in:hover {
+    background-image: url('../image/in-1.png');
+}
+
+#x:hover {
+    background-image: url('../image/x-1.png');
+}
+
 /* Responsiveness for Smaller Devices */
 @media only screen and (max-width: 700px){
     .grid-container {
