@@ -1,5 +1,5 @@
 const austen = '65460f2d682dbe6e454f0b9ada6fd285';
-const gundam = 'g3u7bw63t43bbemjyx2kbjxm'; 
+const gundam = 'rs5eju3z56uu254kcxbrt54p'; 
 //HTML Elements
 const flightDiv = document.getElementById('flight-info');
 const flightBtn = document.getElementById('flight-btn');
@@ -407,8 +407,10 @@ function outboundFlight(arr){
 
 //Create HTML Elements to Render Data in the Browser 
 function renderData(arr){        
-    let onePlane = '<span id="more-planes"><i class="fa-solid fa-plane one more-plane"></i></span>'
-    let twoPlanes = '<span id="centre-planes">> <i class="fa-solid fa-circle"></i> ></span>'
+    // let onePlane = '<span id="more-planes"><i class="fa-solid fa-plane one more-plane"></i></span>';
+    let onePlane = '<span id="more-planes">></span>';
+
+    let twoPlanes = '<span id="centre-planes">> <i class="fa-solid fa-circle"></i> ></span>';
     let outboundCentrepiece;
     let returnCentrepiece = '<i class="fa-solid fa-plane"></i>';
     let moreCentrepiece = onePlane;
