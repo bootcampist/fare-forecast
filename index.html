@@ -11,13 +11,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;500;600&family=Manjari:wght@100;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/bootstrap-datepicker.css" />
     <link rel="stylesheet" href="./assets/css/style.css"/>
-    <!-- <link rel="stylesheet" href="./assets/css/weather.css"/> -->
     <link rel="stylesheet" href="./assets/css/flight.css"/>
     <title>Fare Forecast</title>
 </head>
 <body>
-    <!-- <header class="class=container-fluid text-center text-white bg-dark"> -->
-    <header class="class=container-fluid text-center text-white bg-dark">
+
+    <header class="container-fluid text-center text-white bg-dark">
 
         <h1><span class="fare"><span class="f">f</span> a r e </span> <span class="forecast"><span class="f">f</span> o r e c a s t</span></h1>
     </header> 
@@ -32,15 +31,13 @@
                 <input type="text" name="" id="departure-date" placeholder=" Departure Date"/>
                 <input type="text" name="" id="return-date" placeholder=" Return Date" />
                 <div class="input-group-button">
-                        <!-- <button class="btn btn-outline-secondary" type="button" id="button-addon2">Find Flights</button> -->
-                        <button type="submit" class="btn search-button" aria-label="submit search" id="flight-btn">Find Flights!</button>
-                        <button id="favourites-btn" class="btn btn-primary">Add to Favourites</button>
+                    <button type="submit" class="btn search-button" aria-label="submit search" id="flight-btn">Find Flights!</button>
+                    <button id="favourites-btn" class="btn btn-primary">Add to Favourites</button>
                 </div>
             </div> 
-                <!-- </div> -->
         </form>    
     </div>
-    <div class="grid-container">
+    <div class="grid-container container-fluid">
         
         <div id="flight" class="first card"> 
             <div id="spinner">
@@ -48,21 +45,10 @@
                 </div>      
             </div>
             <div id="error-display"></div>
-            <div id="flight-info">
-
-            </div>
-           
+            <div id="flight-info"></div>  
         </div>
-       
         <div id="weather-card" class="first card">
-            <!-- <div id="Weather" class="first card">         -->
-            <div id="Weather">        
-                <!-- <h2>Weather Dashboard</h2>
-                    <p>
-                        Weather Forecast.
-                    </p> -->
-            </div>
-
+            <div id="Weather"></div>
         </div>
         <div id="currency_exchange" class="first card"> 
             <div id="currency-container">
@@ -70,7 +56,6 @@
                 <div id="currency-box">     
                     <p id="currency_text"></p>
                     <div id="currency-display">
-
                     </div>
                 </div>  
             </div>
@@ -79,23 +64,19 @@
                 <div id="clear"></div>
             </div>
         </div>
-    </div> 
-                    
+    </div>             
     <footer class="container-fluid text-center text-white">
-        <!-- <div class="container-fluid"> -->
-                <ul>
-                    <a href="https://www.facebook.com" target="_blank">
-                        <li class="icons" id="fb"></li>
-                    </a>
-                    <a href="https://www.instagram.com" target="_blank">
-                        <li class="icons" id="in"></li>
-                    </a>
-                    <a href="https://www.twitter.com" target="_blank">
-                        <li class="icons" id="x"></li>
-                    </a>
-                    </li></ul>
-                </ul>     
-        <!-- </div> -->
+            <ul>
+                <a href="https://www.facebook.com" target="_blank">
+                    <li class="icons" id="fb"></li>
+                </a>
+                <a href="https://www.instagram.com" target="_blank">
+                    <li class="icons" id="in"></li>
+                </a>
+                <a href="https://www.twitter.com" target="_blank">
+                    <li class="icons" id="x"></li>
+                </a>
+            </ul>     
             <p> &copy; 2024 Fare Forecast </p>
             <p> Legal Stuff | Privacy | Security</p>
     </footer>
