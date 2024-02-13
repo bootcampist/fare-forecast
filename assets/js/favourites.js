@@ -99,9 +99,9 @@ function renderButtons (array){
             spinner.style.display="block";
             returnExists = true;
             initialise();
-            currency.innerHTML='';
-            $('#currency-box').fadeOut();
-            $('#currency-box').fadeIn(1000);
+            // currency.innerHTML='';
+            $('#currency-container').fadeOut();
+            $('#currency-container').fadeIn(1000);
             $('#Weather').fadeOut();
             $('#Weather').fadeIn(1000);
             userInput.currentCity = favouritesInput.currentCity;
@@ -109,6 +109,7 @@ function renderButtons (array){
             userInput.departureDate = favouritesInput.departureDate;
             userInput.returnDate = favouritesInput.returnDate;
 
+            //Change Input Section to Display Saved Values
             inputOrigin.value = favouritesInput.currentCity;
             inputDestination.value = favouritesInput.destinationCity;
             inputDeparture.value = favouritesInput.departureDate.split('-').reverse().join('-');
@@ -198,12 +199,12 @@ function renderButtons (array){
             //Currency
             $("#currency_text").empty();
             destinationString = favouritesInput.destinationCity.toUpperCase();
-            originString =  $("#origin-input").val().toUpperCase();
+            originString =  favouritesInput.currentCity.toUpperCase();
             if (destinationString === "" || originString === "") {
                 return
             }
-            querydestinationURL = locationAPI + destinationString + locationAPIkey;
-            queryoriginURL = locationAPI + originString + locationAPIkey;
+            let querydestinationURL = locationAPI + destinationString + locationAPIkey;
+            let queryoriginURL = locationAPI + originString + locationAPIkey;
         
             // below is geocoding API code
             fetch(querydestinationURL)
