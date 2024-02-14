@@ -101,6 +101,11 @@ li {
     color: rgb(255, 255, 255, 0.7);
 }
 
+.flight-items:nth-child(even){
+    background-color: rgb(29, 45, 62, 0.6);
+    border-radius: 10px;
+}
+
 /* Styling for the Divs Containing the Flight Text */
 .flight-textbox-o, .more-div, .flight-textbox-r {
     display: flex;

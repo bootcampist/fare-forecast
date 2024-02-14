@@ -157,21 +157,24 @@ function renderButtons (array){
                 const timezoneOffset = data.timezone;
                 const localTime = new Date(new Date().getTime() + timezoneOffset * 1000);
                 const timeString = localTime.toUTCString().replace(" GMT", "");
-                let time;
+                let date = dayjs(timeString).format('ddd DD MMM YYYY');
+                var time ='';
                 let count = 0;
+                // let clock = setInterval(()=>{time = dayjs(timeString).add(count, 'second').format('HH:mm:ss'); count++; return time}, 1000);
+
                 
 
                 const weatherHtml = `
                       <div class="col-12">
                           <h2>${data.name}</h2>
-                          <p>Local Time: ${timeString}<span id='local-time'></span></p>
+                          <p>Local Time: ${date} <span id='local-time'> </span></p>
                           <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="${data.weather[0].description}">
                           <p>Temperature: ${data.main.temp} °C</p>
                           <p>Weather: ${data.weather[0].main}</p>
                           <p>Wind Speed: ${data.wind.speed} KPH</p>
                           <p>Humidity: ${data.main.humidity}%</p>
                   `;
-                //   let clock = setInterval(()=>{time = dayjs(timeString).add(count, 'second').format('HH:mm:ss'); count++; $('#local-time').html(time);}, 1000);
+                  let clock = setInterval(()=>{time = dayjs(timeString).add(count, 'second').format('HH:mm:ss'); count++; $('#local-time').html('. '+ time);}, 1000);
                 weatherDisplay.html(weatherHtml);
               }
             

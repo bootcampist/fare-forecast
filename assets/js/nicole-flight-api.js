@@ -1,5 +1,6 @@
 const austen = '65460f2d682dbe6e454f0b9ada6fd285';
-const gundam = 'rs5eju3z56uu254kcxbrt54p'; 
+const gundam = 'ture89gv29xwv3utum5rnuwv';
+
 //HTML Elements
 const flightDiv = document.getElementById('flight-info');
 const flightBtn = document.getElementById('flight-btn');
@@ -653,6 +654,9 @@ function renderData(arr){
         ulEl.append(liEl);
         if (isDirect){
             moreBtn.style.display='none';
+            liEl.setAttribute('class', 'flight-items');
+        }else{
+            liEl.removeAttribute('class', 'flight-items');
         };   
     };
     flightContainer.append(ulEl)
