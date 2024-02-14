@@ -13,12 +13,6 @@ const favouritesBtn = document.getElementById('favourites-btn');
 //Weather
 const apiKey = `359fbb9063e60407b575e9a14683190b`;
 
-//Currency
-// currencyAPI = 'https://v6.exchangerate-api.com/v6/cce8439a497e07a97ad9f20f/pair/';
-// locationAPI = "https://api.openweathermap.org/geo/1.0/direct?q=";
-// locationAPIkey = "&appid=7029ec148d2666f47569499650a8ea2e";
-// databaseLink = "https://pkgstore.datahub.io/core/country-codes/country-codes_json/data/616b1fb83cbfd4eb6d9e7d52924bb00a/country-codes_json.json";
-
 //Global Variables
 let favouritesArray=[];
 let emptyFavouritesItem = {displayName: '', origin: '', destination: '', departure:'' , return: ''};
@@ -32,7 +26,7 @@ function addDetails (){
     favouritesItem.destination = inputDestination.value.toLowerCase().trim();
     favouritesItem.departure = inputDeparture.value;
     favouritesItem.return =  inputReturn.value;
-    favouritesItem.displayName = `${inputOrigin.value} >> ${inputDestination.value}`;
+    favouritesItem.displayName = `${capitalCity(favouritesItem.origin)} >> ${capitalCity(favouritesItem.destination)}`;
     
     addToFavourites(favouritesItem);
 }
@@ -74,6 +68,14 @@ function localise (){
     localStorage.setItem('localFavourites', localString);
 };
 
+function capitalCity (word) {
+    const city = word;
+    const capitalLetter = city.charAt(0).toUpperCase();
+    const restOfWord = city.slice(1);
+    const capitalisedWord = capitalLetter + restOfWord;
+    return capitalisedWord;
+};
+
 //Create and Display Previous Search Buttons
 function renderButtons (array){
     favouritesDiv.innerHTML = '';
@@ -110,8 +112,8 @@ function renderButtons (array){
             userInput.returnDate = favouritesInput.returnDate;
 
             //Change Input Section to Display Saved Values
-            inputOrigin.value = favouritesInput.currentCity;
-            inputDestination.value = favouritesInput.destinationCity;
+            inputOrigin.value = capitalCity(favouritesInput.currentCity);
+            inputDestination.value = capitalCity(favouritesInput.destinationCity);
             inputDeparture.value = favouritesInput.departureDate.split('-').reverse().join('-');
             inputReturn.value = favouritesInput.returnDate.split('-').reverse().join('-');
 
@@ -155,17 +157,21 @@ function renderButtons (array){
                 const timezoneOffset = data.timezone;
                 const localTime = new Date(new Date().getTime() + timezoneOffset * 1000);
                 const timeString = localTime.toUTCString().replace(" GMT", "");
-            
+                let time;
+                let count = 0;
+                
+
                 const weatherHtml = `
                       <div class="col-12">
                           <h2>${data.name}</h2>
-                          <p>Local Time: ${timeString}</p>
+                          <p>Local Time: ${timeString}<span id='local-time'></span></p>
                           <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="${data.weather[0].description}">
                           <p>Temperature: ${data.main.temp} °C</p>
                           <p>Weather: ${data.weather[0].main}</p>
                           <p>Wind Speed: ${data.wind.speed} KPH</p>
                           <p>Humidity: ${data.main.humidity}%</p>
                   `;
+                //   let clock = setInterval(()=>{time = dayjs(timeString).add(count, 'second').format('HH:mm:ss'); count++; $('#local-time').html(time);}, 1000);
                 weatherDisplay.html(weatherHtml);
               }
             
