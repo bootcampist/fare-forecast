@@ -17,7 +17,9 @@ const apiKey = `359fbb9063e60407b575e9a14683190b`;
 let favouritesArray=[];
 let emptyFavouritesItem = {displayName: '', origin: '', destination: '', departure:'' , return: ''};
 let clearBtnExists = false;
-
+let clock;
+let time;
+let count =0;
 
 //Collect User's Favourites Details and Store in an Object
 function addDetails (){ 
@@ -75,6 +77,16 @@ function capitalCity (word) {
     const capitalisedWord = capitalLetter + restOfWord;
     return capitalisedWord;
 };
+
+function startTime() {
+    count = 0;                
+    let clockTime = setInterval(()=>{time = dayjs(timeString).add(count, 'second').format('HH:mm:ss'); count++; $('#local-time').html('<span id="full-stop">.</span> '+ time);}, 1000);
+    return clockTime;
+  }
+
+  function stopTime(element) {
+    clearInterval(element)
+  }
 
 //Create and Display Previous Search Buttons
 function renderButtons (array){
@@ -156,13 +168,8 @@ function renderButtons (array){
                 // Calculate local time
                 const timezoneOffset = data.timezone;
                 const localTime = new Date(new Date().getTime() + timezoneOffset * 1000);
-                const timeString = localTime.toUTCString().replace(" GMT", "");
+                timeString = localTime.toUTCString().replace(" GMT", "");
                 let date = dayjs(timeString).format('ddd DD MMM YYYY');
-                var time ='';
-                let count = 0;
-                // let clock = setInterval(()=>{time = dayjs(timeString).add(count, 'second').format('HH:mm:ss'); count++; return time}, 1000);
-
-                
 
                 const weatherHtml = `
                       <div class="col-12">
@@ -174,7 +181,9 @@ function renderButtons (array){
                           <p>Wind Speed: ${data.wind.speed} KPH</p>
                           <p>Humidity: ${data.main.humidity}%</p>
                   `;
-                  let clock = setInterval(()=>{time = dayjs(timeString).add(count, 'second').format('HH:mm:ss'); count++; $('#local-time').html('. '+ time);}, 1000);
+                  stopTime(clock);
+                  clock = startTime();
+
                 weatherDisplay.html(weatherHtml);
               }
             

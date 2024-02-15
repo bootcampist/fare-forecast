@@ -38,12 +38,13 @@ $(document).ready(function () {
     // Calculate local time
     const timezoneOffset = data.timezone;
     const localTime = new Date(new Date().getTime() + timezoneOffset * 1000);
-    const timeString = localTime.toUTCString().replace(" GMT", "");
+    timeString = localTime.toUTCString().replace(" GMT", "");
+    let date = dayjs(timeString).format('ddd DD MMM YYYY');
 
     const weatherHtml = `
           <div class="col-12">
               <h2>${data.name}</h2>
-              <p>Local Time: ${timeString}</p>
+              <p>Local Time: ${date} <span id='local-time'> </span></p>
               <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="${data.weather[0].description}">
               <p>Temperature: ${data.main.temp} °C</p>
               <p>Weather: ${data.weather[0].main}</p>
@@ -52,6 +53,8 @@ $(document).ready(function () {
               
           </div>
       `;
+      stopTime(clock);
+      clock = startTime();
               // <button class="btn btn-primary" onclick="addToFavorites('${data.name}')">Add to Favorites</button>
     weatherDisplay.html(weatherHtml);
   }

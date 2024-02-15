@@ -408,9 +408,8 @@ function outboundFlight(arr){
 
 //Create HTML Elements to Render Data in the Browser 
 function renderData(arr){        
-    // let onePlane = '<span id="more-planes"><i class="fa-solid fa-plane one more-plane"></i></span>';
-    let onePlane = '<span id="more-planes">></span>';
-
+    let onePlane = '<span id="more-planes"><i class="fa-solid fa-plane one more-plane"></i></span>';
+    // let onePlane = '<span id="more-planes">></span>';
     let twoPlanes = '<span id="centre-planes">> <i class="fa-solid fa-circle"></i> ></span>';
     let outboundCentrepiece;
     let returnCentrepiece = '<i class="fa-solid fa-plane"></i>';

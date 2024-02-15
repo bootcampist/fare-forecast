@@ -82,6 +82,7 @@ p {
     font-size: 1rem;
     display: flex;
     align-items: center;
+    margin-top:20px;
 }
 
 .card button {
@@ -110,6 +111,10 @@ p {
     padding: 20px;
     border-radius: 10px;
     display:none;
+}
+
+#full-stop {
+    color: #446372;
 }
 
 /* Styling for the Currency Section */
