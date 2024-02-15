@@ -48,7 +48,7 @@ $(document).ready(function () {
               <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="${data.weather[0].description}">
               <p>Temperature: ${data.main.temp} °C</p>
               <p>Weather: ${data.weather[0].main}</p>
-              <p>Wind Speed: ${data.wind.speed} KPH</p>
+              <p>Wind Speed: ${(data.wind.speed*3.6).toFixed(2)} KPH</p>
               <p>Humidity: ${data.main.humidity}%</p>
               
           </div>
@@ -65,22 +65,23 @@ $(document).ready(function () {
       forecastDisplay.html(`<p>Forecast not available.</p>`);
       return;
     }
-    let forecastHtml = `<div class="col-12"><h3>5-Day Forecast:</h3></div>`;
+    let forecastHtml = ``;
     data.list.forEach((forecast, index) => {
       if (index % 8 === 0) {
         forecastHtml += `
                     <div class="col-md-2 forecast-card">
                         <h5>${new Date(
                           forecast.dt_txt
-                        ).toLocaleDateString()}</h5>
+                        ).toLocaleDateString().slice(0,5)}</h5>
                         <img src="https://openweathermap.org/img/wn/${
                           forecast.weather[0].icon
                         }.png" alt="Weather icon">
-                        <p>Temp: ${forecast.main.temp}°C</p>
-                        <p>Wind: ${forecast.wind.speed} KPH</p>
-                        <p>Humidity: ${forecast.main.humidity}%</p>
+                        <p>${forecast.main.temp}°C</p>
+                        <p>${(forecast.wind.speed*3.6).toFixed(2)} KPH</p>
+                        <p>${forecast.main.humidity}%</p>
                     </div>
                 `;
+                // <div class="col-12"><h3>5-Day Forecast:</h3></div>
       }
     });
     forecastDisplay.html(forecastHtml);

@@ -1,5 +1,5 @@
 const austen = '65460f2d682dbe6e454f0b9ada6fd285';
-const gundam = 'ture89gv29xwv3utum5rnuwv';
+const t = 'ture89gv29xwv3utum5rnuwv';
 
 //HTML Elements
 const flightDiv = document.getElementById('flight-info');
@@ -9,6 +9,7 @@ const destinationInput = document.getElementById('destination-input');
 const departureDate = document.getElementById('departure-date');
 const returnDate = document.getElementById('return-date');
 let spinner = document.getElementById('spinner');
+const forecast = document.getElementById('forecast');
 const currency = document.getElementById('currency-display');
 const currencyBox = document.getElementById('currency-box');
 
@@ -133,7 +134,7 @@ function nearestAirport() {
     // Fetch requests
     Promise.all([
         fetch(originQuery , {
-            headers: {Authorization: `Bearer ${gundam}`}
+            headers: {Authorization: `Bearer ${t}`}
         }).then((response) => {return response.json()}).then((data1) => {  
                 const code = data1.NearestAirportResource.Airports.Airport[0].CityCode;
                 userInput.geocoded.origin.cityCode = code;
@@ -154,7 +155,7 @@ function nearestAirport() {
             errorMessage (errorMsg);
         }),
         fetch(destinationQuery , {
-            headers: {Authorization: `Bearer ${gundam}`}
+            headers: {Authorization: `Bearer ${t}`}
         }).then((response) => {return response.json()}).then((data2) => {  
                 const code = data2.NearestAirportResource.Airports.Airport[0].CityCode;
                 userInput.geocoded.destination.cityCode = code;
@@ -200,7 +201,7 @@ function flightData(departureCity, arrivalCity,arr) {
 
     //Fetch request
         fetch(query , {
-            headers: {Authorization: `Bearer ${gundam}`}
+            headers: {Authorization: `Bearer ${t}`}
         })
         .then((response) => {
             return response.json();
@@ -340,7 +341,7 @@ function getAirportName(airportCode, location){
 
     const nameQuery = `https://api.lufthansa.com/v1/mds-references/airports/${code}?limit=20&offset=0&LHoperated=0`;
     fetch(nameQuery , {
-        headers: {Authorization: `Bearer ${gundam}`}
+        headers: {Authorization: `Bearer ${t}`}
     }).then((response) => {return response.json()}).then((data) => {  
             searchedName = data?.AirportResource.Airports.Airport.Names.Name;            
             for(i=0; i< searchedName.length; i++){
@@ -746,9 +747,14 @@ flightBtn.addEventListener('click', (e)=>{
         $('#currency-container').fadeIn(1000);
         $('#Weather').fadeOut();
         $('#Weather').fadeIn(1000);
+        forecast.style.opacity = "1";
+        $('#forecast').fadeOut();
+        $('#forecast').fadeIn(1000);
+        
         queryInfo(userInput);
     } else {
         let errorInput = 'Please fill in all the search details.'
         errorMessage(errorInput);
     };       
 });
+
