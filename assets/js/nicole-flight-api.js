@@ -1,5 +1,5 @@
 const austen = '65460f2d682dbe6e454f0b9ada6fd285';
-const t = 'xzahvgqc38d3v8ggjjuss3dj';
+const t = 'hh8qzpk8ncxc24jnv8xqnmd9';
 
 //HTML Elements
 const flightDiv = document.getElementById('flight-info');
@@ -747,7 +747,7 @@ flightBtn.addEventListener('click', (e)=>{
         $('#currency-container').fadeIn(1000);
         $('#Weather').fadeOut();
         $('#Weather').fadeIn(1000);
-        forecast.style.opacity = "1";
+        // forecast.style.opacity = "1";
         $('#forecast').fadeOut();
         $('#forecast').fadeIn(1000);
         
